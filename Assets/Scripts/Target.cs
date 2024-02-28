@@ -51,10 +51,9 @@ public class Target : MonoBehaviour
         GameManager.instance.UpdateScore(pointValue);
         Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
     }
-    private void OnTriggerEnter(Collider other)
-    {
+    private void OnTriggerEnter(Collider other) { 
         Destroy(gameObject);
-
+        if (!gameObject.CompareTag("Bad"))
+            GameManager.instance.GameOver();
+        }
     }
-
-}
